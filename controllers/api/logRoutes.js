@@ -6,8 +6,12 @@ router.get("/", async (req, res) => {
   try {
     const logData = await Log.findAll();
 
-    const plainData = logData.map((log) => log.get({ plain: true }));
-    res.status(200).json(plainData);
+    const logs = logData.map((log) => log.get({ plain: true }));
+
+    res.render("dashboard", {
+      logs,
+    });
+    res.status(200).json(logs);
   } catch (err) {
     res.status(400).json(err);
   }
