@@ -12,7 +12,7 @@ Log.init({
     primaryKey: true,
     autoIncrement: true,
   },
-  type: {
+  workout_type: {
     type: DataTypes.STRING,
     allowNull: false,
   },
