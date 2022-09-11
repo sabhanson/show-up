@@ -17,4 +17,14 @@ router.get("/home", async (req, res) => {
   }
 });
 
+router.get("/", async (req, res) => {
+  try {
+    res.render("noAuth", {
+      layout: "noAuth",
+    });
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 module.exports = router;
