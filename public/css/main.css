@@ -1,0 +1,31 @@
+:root {
+  --orange: #ee6c4d;
+  --pale-blue: #e0fbfc;
+  --med-blue: #98c1d9;
+  --dark-blue: #3d5a80;
+  --darkest-blue: #293241;
+}
+
+.navbar {
+  background: rgb(152, 193, 217);
+  background: linear-gradient(
+    193deg,
+    rgba(152, 193, 217, 1) 0%,
+    rgba(224, 251, 252, 1) 82%
+  );
+}
+
+.navbar-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  color: var(--orange);
+}
+
+.navbar-brand:hover {
+  color: var(--med-blue);
+}
+
+.bi-plus-square {
+  color: var(--orange);
+  font-size: 2rem;
+}
