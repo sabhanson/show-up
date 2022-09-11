@@ -1,6 +1,10 @@
 {{#each logs as |log|}}
 
-  <p>{{log.workout_type}}</p>
-  <p>{{log.details}}</p>
+  <div class="card log-details" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{log.workout_type}}</h5>
+      <p class="card-text">{{log.details}}</p>
+    </div>
+  </div>
 
 {{/each}}
