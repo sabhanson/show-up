@@ -22,7 +22,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(require("./controllers/"));
 
-app.listen(PORT, () => {
-  console.log(`Yo server is up at http://localhost:${PORT}`);
-  sequelize.sync({ force: false });
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () =>
+    console.log("Yo server is up at http://localhost:${PORT}")
+  );
 });
