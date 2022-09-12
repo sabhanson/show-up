@@ -1,13 +1,12 @@
-<div class="container d-flex justify-content-center">
+{{#each logs as |log|}}
+  <div class="row">
 
-  {{#each logs as |log|}}
-
-    <div class="card log-details col-12" style="width: 18rem;">
+    <div class="card log-details col-6 mx-auto" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title">{{log.workout_type}}</h5>
         <p class="card-text">{{log.details}}</p>
       </div>
     </div>
+  </div>
 
-  {{/each}}
-</div>
+{{/each}}
