@@ -27,4 +27,24 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/login", async (req, res) => {
+  try {
+    res.render("login", {
+      layout: "noAuth",
+    });
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+router.get("/signup", async (req, res) => {
+  try {
+    res.render("signup", {
+      layout: "noAuth",
+    });
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 module.exports = router;
