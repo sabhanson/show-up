@@ -6,16 +6,22 @@
   --darkest-blue: #293241;
 }
 
-.navbar {
-  background: rgb(152, 193, 217);
+main {
+  height: 100vh;
+  background: rgb(224, 251, 252);
   background: linear-gradient(
     193deg,
-    rgba(152, 193, 217, 1) 0%,
-    rgba(224, 251, 252, 1) 82%
+    rgba(224, 251, 252, 1) 24%,
+    rgba(238, 108, 77, 1) 100%
   );
 }
 
-.navbar-brand {
+.navbar {
+  background-color: var(--pale-blue);
+}
+
+.navbar-brand,
+.navbar-brand-disabled {
   font-family: 'Cormorant Garamond', serif;
   font-size: 3rem;
   color: var(--orange);
@@ -32,4 +38,23 @@
 
 h1 {
   font-family: 'Cormorant Garamond', serif;
+}
+
+.btn-outline-primary,
+.btn-outline-primary:hover,
+.btn-outline-primary:active,
+.btn-outline-primary:visited,
+.btn-outline-primary:focus {
+  height: 3rem;
+  color: white;
+  border-color: var(--darkest-blue);
+  background-color: var(--dark-blue);
+}
+.btn:hover {
+  box-shadow: 5px 5px var(--med-blue);
+}
+
+.btn:first-child:hover {
+  background-color: var(--orange);
+  border-color: var(--orange);
 }

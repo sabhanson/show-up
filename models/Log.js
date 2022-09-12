@@ -22,6 +22,14 @@ Log.init(
       type: DataTypes.TEXT,
       allowNull: true,
     },
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: "user",
+        key: "id",
+      },
+    },
   },
   { sequelize, freezeTableName: true, underscored: true, modelName: "log" }
 );
