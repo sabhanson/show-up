@@ -1,21 +1,22 @@
 const router = require("express").Router();
 const Log = require("../../models/Log");
+const { withAuth, withAuthAPI } = require("../../utils/withAuth.js");
 
 // GET all logs '/api/logs'
-// router.get("/", async (req, res) => {
-//   try {
-//     const logData = await Log.findAll();
+router.get("/", withAuthAPI, async (req, res) => {
+  try {
+    const logData = await Log.findAll();
 
-//     const logs = logData.map((log) => log.get({ plain: true }));
+    const logs = logData.map((log) => log.get({ plain: true }));
 
-//     res.render("dashboard", {
-//       layout: "main",
-//       logs,
-//     });
-//   } catch (err) {
-//     res.status(400).json(err);
-//   }
-// });
+    res.render("dashboard", {
+      layout: "main",
+      logs,
+    });
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
 
 // GET the "create new log" form
 router.get("/newLog", (req, res) => {

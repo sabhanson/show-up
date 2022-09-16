@@ -1,6 +1,17 @@
 [
   {
-    "username": "pedal_queen",
+    "id": 1,
+    "username": "sabsabsab",
+    "password": "password"
+  },
+  {
+    "id": 2,
+    "username": "basbasbas",
+    "password": "password"
+  },
+  {
+    "id": 3,
+    "username": "jayjayjay",
     "password": "password"
   }
 ]
