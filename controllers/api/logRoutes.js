@@ -18,7 +18,30 @@ router.get("/", withAuthAPI, async (req, res) => {
   }
 });
 
-// GET the "create new log" form
+// GET biking logs '/api/logs/:type'
+router.get("/:type", async (req, res) => {
+  try {
+    const logData = await Log.findAll({
+      where: {
+        workout_type: req.params.type,
+      },
+    });
+
+    const logs = logData.map((log) => log.get({ plain: true }));
+
+    const workoutType = logs[0].workout_type;
+
+    res.render("filterData", {
+      layout: "main",
+      logs,
+      workoutType: workoutType,
+    });
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+// GET the "create new log" form '/api/logs/newLog'
 router.get("/newLog", (req, res) => {
   try {
     res.render("newLog", {

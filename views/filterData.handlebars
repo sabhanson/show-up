@@ -1,0 +1,14 @@
+<div>
+  <h1>{{workoutType}}</h1>
+  {{#each logs as |log|}}
+    <div class="row">
+
+      <div class="card log-details col-6 mx-auto" style="width: 18rem;">
+        <div class="card-body">
+          <p class="card-text">{{log.details}}</p>
+        </div>
+      </div>
+    </div>
+
+  {{/each}}
+</div>
