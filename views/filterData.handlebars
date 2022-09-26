@@ -1,5 +1,14 @@
 <div>
-  <h1>{{workoutType}}</h1>
+  <h1>All
+    <strong>
+      {{workoutType}}
+    </strong>
+    workouts by
+    <strong>
+      {{username}}
+    </strong>
+  </h1>
+
   {{#each logs as |log|}}
     <div class="row">
 

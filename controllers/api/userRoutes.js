@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { User } = require("../../models");
 
+//! all routes tested on Insomnia
 router.post("/signup", async (req, res) => {
   try {
     const newUser = await User.create({
@@ -8,10 +9,10 @@ router.post("/signup", async (req, res) => {
       password: req.body.password,
     });
 
-    // req.session.user_id = newUser.id;
-    req.session.logged_in = true;
-
     req.session.save(() => {
+      req.session.user_id = newUser.id;
+      req.session.username = newUser.username;
+      req.session.logged_in = true;
       res.status(200).json(newUser);
     });
   } catch (err) {
@@ -39,10 +40,11 @@ router.post("/login", async (req, res) => {
       res.status(400).json({ message: "Oops...  something wrong. Try again." });
       return;
     }
-    req.session.user_id = userData.id;
-    req.session.logged_in = true;
 
     req.session.save(() => {
+      req.session.logged_in = true;
+      req.session.username = userData.username;
+      req.session.user_id = userData.id;
       res.json({ user: userData, message: "You are logged in" });
     });
   } catch (err) {

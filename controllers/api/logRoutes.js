@@ -2,39 +2,20 @@ const router = require("express").Router();
 const Log = require("../../models/Log");
 const { withAuth, withAuthAPI } = require("../../utils/withAuth.js");
 
+//! all routes tested on Insomnia
+
 // GET all logs '/api/logs'
-router.get("/", withAuthAPI, async (req, res) => {
+router.get("/", withAuth, async (req, res) => {
   try {
-    const logData = await Log.findAll();
+    const logData = await Log.findAll({
+      where: { user_id: req.session.user_id },
+    });
 
     const logs = logData.map((log) => log.get({ plain: true }));
 
     res.render("dashboard", {
       layout: "main",
       logs,
-    });
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
-
-// GET biking logs '/api/logs/:type'
-router.get("/:type", async (req, res) => {
-  try {
-    const logData = await Log.findAll({
-      where: {
-        workout_type: req.params.type,
-      },
-    });
-
-    const logs = logData.map((log) => log.get({ plain: true }));
-
-    const workoutType = logs[0].workout_type;
-
-    res.render("filterData", {
-      layout: "main",
-      logs,
-      workoutType: workoutType,
     });
   } catch (err) {
     res.status(400).json(err);
@@ -52,6 +33,30 @@ router.get("/newLog", (req, res) => {
   }
 });
 
+// GET logs by workout_type '/api/logs/:type'
+router.get("/:workout_type", async (req, res) => {
+  try {
+    const logData = await Log.findAll({
+      where: {
+        workout_type: req.params.workout_type,
+        user_id: req.session.user_id,
+      },
+    });
+
+    const logs = logData.map((log) => log.get({ plain: true }));
+
+    const workoutType = logs[0].workout_type;
+
+    res.render("filterData", {
+      layout: "main",
+      logs,
+      workoutType: workoutType,
+      username: req.session.username,
+    });
+  } catch (err) {
+    res.status(400).json("no workout_type data");
+  }
+});
 // CREATE/POST a new log '/api/logs/newLog'
 router.post("/newLog", async (req, res) => {
   const body = req.body;
@@ -59,7 +64,7 @@ router.post("/newLog", async (req, res) => {
     const newLog = await Log.create({
       workout_type: body.workout_type,
       details: body.details,
-      // workout_type and details
+      user_id: req.session.user_id,
     });
 
     res.status(200).json(newLog);

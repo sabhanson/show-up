@@ -1,8 +1,7 @@
 const router = require("express").Router();
-const { Log } = require("../models/");
 
-
-router.get("/", async (req, res) => {
+//! all routes tested on Insomnia
+router.get("/noAuth", async (req, res) => {
   try {
     res.render("noAuth", {
       layout: "noAuth",
