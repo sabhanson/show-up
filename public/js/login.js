@@ -17,12 +17,12 @@ const loginFormHandler = async (event) => {
       },
       body: JSON.stringify({ username: username, password: password }),
     });
-    console.log(response);
 
     if (response.ok) {
       // If successful, redirect the browser to the profile page
+      console.log(response);
       // console.log("hey it's ok");
-      document.location.replace("/api/logs/");
+      // document.location.replace("/api/logs/");
     } else {
       console.log("oof");
       alert(response.statusText);
