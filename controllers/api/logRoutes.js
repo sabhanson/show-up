@@ -33,6 +33,22 @@ router.get("/newLog", (req, res) => {
   }
 });
 
+// CREATE/POST a new log '/api/logs/newLog'
+router.post("/newLog", async (req, res) => {
+  const body = req.body;
+  try {
+    const newLog = await Log.create({
+      workout_type: body.workout_type,
+      details: body.details,
+      user_id: req.session.user_id,
+    });
+
+    res.status(200).json(newLog);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 // GET logs by workout_type '/api/logs/:type'
 router.get("/:workout_type", async (req, res) => {
   try {
@@ -55,21 +71,6 @@ router.get("/:workout_type", async (req, res) => {
     });
   } catch (err) {
     res.status(400).json("no workout_type data");
-  }
-});
-// CREATE/POST a new log '/api/logs/newLog'
-router.post("/newLog", async (req, res) => {
-  const body = req.body;
-  try {
-    const newLog = await Log.create({
-      workout_type: body.workout_type,
-      details: body.details,
-      user_id: req.session.user_id,
-    });
-
-    res.status(200).json(newLog);
-  } catch (err) {
-    res.status(400).json(err);
   }
 });
 
