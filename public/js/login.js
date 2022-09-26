@@ -11,18 +11,18 @@ const loginFormHandler = async (event) => {
 
     const response = await fetch("/api/users/login", {
       method: "POST",
+      body: JSON.stringify({ username: username, password: password }),
       headers: {
         Accept: "application/json, text/plain, */*",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username: username, password: password }),
     });
 
     if (response.ok) {
       // If successful, redirect the browser to the profile page
       console.log(response);
       // console.log("hey it's ok");
-      // document.location.replace("/api/logs/");
+      document.location.replace("/api/logs/");
     } else {
       console.log("oof");
       alert(response.statusText);
