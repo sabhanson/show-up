@@ -33,6 +33,17 @@ router.get("/newLog", (req, res) => {
   }
 });
 
+// GET the "chartTest" view '/api/logs/chartTest'
+router.get("/chartTest", (req, res) => {
+  try {
+    res.render("chartTest", {
+      layout: "main",
+    });
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 // CREATE/POST a new log '/api/logs/newLog'
 router.post("/newLog", async (req, res) => {
   const body = req.body;

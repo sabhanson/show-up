@@ -1,7 +1,7 @@
 const router = require("express").Router();
-
+const { loggedIn } = require("../utils/withAuth");
 //! all routes tested on Insomnia
-router.get("/noAuth", async (req, res) => {
+router.get("/", loggedIn, async (req, res) => {
   try {
     res.render("noAuth", {
       layout: "noAuth",

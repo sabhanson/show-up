@@ -19,9 +19,21 @@ Log.init(
       allowNull: false,
     },
     details: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: true,
     },
+    // description: {
+    //   type: DataTypes.TEXT,
+    //   allowNull: true,
+    // },
+    // distance: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: true,
+    // },
+    // time: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: true,
+    // },
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: true,
