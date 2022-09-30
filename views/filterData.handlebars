@@ -1,13 +1,30 @@
-<div>
+<div class="text-center">
   <h1>All
     <strong>
       {{workoutType}}
     </strong>
     workouts by
     <strong>
-      {{username}}
+      you
     </strong>
   </h1>
+  {{!-- 
+  {{#if noLogs}}
+    <div>
+      <h2>🤔 it looks pretty empty here!</h2>
+      <h3>try making a new log by pressing the ➕ in the right corner </h3>
+    </div>
+  {{/if}} --}}
+
+  <ul style="list-style: none;">
+    <li>
+
+      <button>filter by year</button>
+      <button>filter by month</button>
+      <button>filter by week</button>
+    </li>
+
+  </ul>
 
   {{#each logs as |log|}}
     <div class="row">
@@ -15,6 +32,7 @@
       <div class="card log-details col-6 mx-auto" style="width: 18rem;">
         <div class="card-body">
           <p class="card-text">{{log.details}}</p>
+          <p class="card-text">{{log.createdAt}}</p>
         </div>
       </div>
     </div>

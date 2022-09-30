@@ -14,6 +14,15 @@ Log.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    createdAt: {
+      type: DataTypes.DATE,
+      //note here this is the guy that you are looking for
+      get() {
+        return moment(this.getDataValue("createdAt")).format(
+          "DD/MM/YYYY h:mm:ss"
+        );
+      },
+    },
     workout_type: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -43,7 +52,13 @@ Log.init(
       },
     },
   },
-  { sequelize, freezeTableName: true, underscored: true, modelName: "log" }
+  {
+    sequelize,
+    freezeTableName: true,
+    underscored: true,
+    modelName: "log",
+    createdAt: true,
+  }
 );
 
 module.exports = Log;

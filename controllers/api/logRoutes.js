@@ -3,6 +3,7 @@ const Log = require("../../models/Log");
 const { withAuth, withAuthAPI } = require("../../utils/withAuth.js");
 
 //! all routes tested on Insomnia
+let noLogs;
 
 // GET all logs '/api/logs'
 router.get("/", withAuth, async (req, res) => {
@@ -12,10 +13,15 @@ router.get("/", withAuth, async (req, res) => {
     });
 
     const logs = logData.map((log) => log.get({ plain: true }));
+
+    if (logs.length === 0) {
+      noLogs = true;
+    }
     // pass username to render
     res.render("dashboard", {
       layout: "main",
       username: req.session.username,
+      noLogs: noLogs,
       logs,
     });
   } catch (err) {
@@ -64,6 +70,7 @@ router.post("/newLog", async (req, res) => {
 // GET logs by workout_type '/api/logs/:type'
 router.get("/:workout_type", async (req, res) => {
   try {
+    let workoutType;
     const logData = await Log.findAll({
       where: {
         workout_type: req.params.workout_type,
@@ -72,13 +79,19 @@ router.get("/:workout_type", async (req, res) => {
     });
 
     const logs = logData.map((log) => log.get({ plain: true }));
-
-    const workoutType = logs[0].workout_type;
+    if (logs.length === 0) {
+      noLogs = true;
+      workoutType = "";
+    } else {
+      // noLogs = false;
+      workoutType = logs[0].workout_type;
+    }
 
     res.render("filterData", {
       layout: "main",
       logs,
-      workoutType: workoutType,
+      noLogs: noLogs,
+      // workoutType: workoutType,
       username: req.session.username,
     });
   } catch (err) {
