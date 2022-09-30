@@ -29,7 +29,7 @@
   <body>
     <nav class="navbar">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/dashboard">workout logger</a>
+        <a class="navbar-brand" href="/api/logs">workout logger</a>
 
         <ul class="navbar-nav me-4">
 
@@ -44,9 +44,12 @@
           </li>
           <li class="li-inline nav-item"><a
               href="#"
+              data-bs-toggle="tooltip"
+              data-bs-placement="bottom"
+              data-bs-title="log out"
               id="logout-link"
-            >Logout</a></li>
-          <li>{{username}}</li>
+            ><i class="bi bi-box-arrow-right"></i></a></li>
+
         </ul>
 
       </div>

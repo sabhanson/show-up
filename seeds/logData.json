@@ -1,6 +1,20 @@
 [
   {
+    "id": 1,
     "workout_type": "biking",
-    "details": "rode 30 miles. lots of hills. 2 hours."
+    "details": "rode 30 miles. 2 hours.",
+    "user_id": 1
+  },
+  {
+    "id": 2,
+    "workout_type": "biking",
+    "details": "rode 222 miles. lots of hills.",
+    "user_id": 2
+  },
+  {
+    "id": 3,
+    "workout_type": "biking",
+    "details": "rode 13 miles. lots of frogs.",
+    "user_id": 3
   }
 ]

@@ -1,9 +1,15 @@
-{{#if noLogs}}
-  <div class="text-center">
+<p class="text-right">welcome, {{username}}</p>
+
+{{#if loggedOut}}
+  <div class="text-center pt-5">
     <h2>🤔 it looks pretty empty here!</h2>
-    <h3>try making a new log by pressing the ➕ in the right corner </h3>
+    <h3>try making a new log by pressing the
+      <i class="bi bi-plus-square"></i>
+      in the right corner
+    </h3>
   </div>
 {{/if}}
+
 {{#each logs as |log|}}
   <div class="row">
 
@@ -12,7 +18,17 @@
         <h5 class="card-title">{{log.workout_type}}</h5>
         <p class="card-text">{{log.details}}</p>
       </div>
+
+      <a
+        data-bs-toggle="tooltip"
+        data-bs-placement="bottom"
+        data-bs-title="delete this log"
+        data-id={{log.id}}
+      >
+        <i class="bi bi-trash-fill"></i></a>
     </div>
   </div>
 
 {{/each}}
+
+<script src="/js/dashboard.js"></script>

@@ -31,7 +31,11 @@ main {
   color: var(--med-blue);
 }
 
-.bi-plus-square {
+.navbar-nav {
+  flex-direction: row;
+}
+
+.bi {
   color: var(--orange);
   font-size: 2rem;
 }

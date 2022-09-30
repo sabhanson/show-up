@@ -42,9 +42,9 @@ router.post("/login", async (req, res) => {
     }
 
     req.session.save(() => {
+      req.session.user_id = userData.id;
       req.session.logged_in = true;
       req.session.username = userData.username;
-      req.session.user_id = userData.id;
       res.json({ user: userData, message: "You are logged in" });
     });
   } catch (err) {
@@ -65,11 +65,19 @@ router.post("/logout", (req, res) => {
 router.get("/allUsers", async (req, res) => {
   try {
     const allUsers = await User.findAll();
-    // console.log(allUsers);
-    // const allUsersData = "hello";
     res.status(200).json(allUsers);
   } catch (err) {
     res.status(400).json(err);
+  }
+});
+
+router.get("/whoLoggedIn", async (req, res) => {
+  if (req.session.username) {
+    res
+      .status(200)
+      .json({ message: `${req.session.username} is currently logged in` });
+  } else {
+    res.status(400).json({ message: "nobody logged in" });
   }
 });
 module.exports = router;

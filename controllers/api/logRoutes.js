@@ -3,7 +3,47 @@ const Log = require("../../models/Log");
 const { withAuth, withAuthAPI } = require("../../utils/withAuth.js");
 
 //! all routes tested on Insomnia
-let noLogs;
+
+// GET all logs '/api/logs'
+router.get("/", withAuth, async (req, res) => {
+  try {
+    const logData = await Log.findAll({
+      where: { user_id: req.session.user_id },
+    });
+
+    const logs = logData.map((log) => log.get({ plain: true }));
+    if (logs.length === 0) {
+      const loggedOut = true;
+      res.render("dashboard", {
+        layout: "main",
+        username: req.session.username,
+        loggedOut,
+      });
+    } else {
+      res.render("dashboard", {
+        layout: "main",
+        username: req.session.username,
+        logs,
+      });
+    }
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+router.get("/data", withAuth, async (req, res) => {
+  try {
+    const logData = await Log.findAll({
+      where: { user_id: req.session.user_id },
+    });
+
+    const logs = logData.map((log) => log.get({ plain: true }));
+    // pass username to render
+    res.status(200).json(logs);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
 
 // GET the "create new log" form '/api/logs/newLog'
 router.get("/newLog", (req, res) => {
@@ -46,7 +86,6 @@ router.post("/newLog", async (req, res) => {
 // GET logs by workout_type '/api/logs/:type'
 router.get("/:workout_type", async (req, res) => {
   try {
-    let workoutType;
     const logData = await Log.findAll({
       where: {
         workout_type: req.params.workout_type,
@@ -55,19 +94,13 @@ router.get("/:workout_type", async (req, res) => {
     });
 
     const logs = logData.map((log) => log.get({ plain: true }));
-    if (logs.length === 0) {
-      noLogs = true;
-      workoutType = "";
-    } else {
-      // noLogs = false;
-      workoutType = logs[0].workout_type;
-    }
+
+    const workoutType = logs[0].workout_type;
 
     res.render("filterData", {
       layout: "main",
       logs,
-      noLogs: noLogs,
-      // workoutType: workoutType,
+      workoutType: workoutType,
       username: req.session.username,
     });
   } catch (err) {
@@ -75,4 +108,19 @@ router.get("/:workout_type", async (req, res) => {
   }
 });
 
+// GET logs by workout_type '/api/logs/delete/:id'
+router.delete("/delete/:id", async (req, res) => {
+  const params = req.params;
+  try {
+    const deletedLog = await Log.destroy({
+      where: {
+        id: params.id,
+      },
+    });
+
+    res.status(200).json({ message: `your log ${deletedLog} was deleted` });
+  } catch (err) {
+    res.status(400).json({ message: `nothing deleted` });
+  }
+});
 module.exports = router;

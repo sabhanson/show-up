@@ -16,7 +16,7 @@ const withAuthAPI = (req, res, next) => {
 
 const loggedIn = (req, res, next) => {
   if (req.session.user_id) {
-    res.redirect("/dashboard");
+    res.redirect("/api/logs");
   } else {
     next();
   }
