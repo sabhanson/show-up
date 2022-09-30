@@ -23,12 +23,10 @@ const clickHandler = function () {
   };
 };
 
-// Instead of attaching the event listener to the container holding our buttons, we loop through our buttons and attach an event listener to each one.
-// Now each button has a backpack with its own reference to `count` instead of a reference to a global variable or attribute.
-// Instead of doing a costly reads on the DOM, we now only mutate the private `count` variable.
-
 if (deleteButtons) {
   for (let i = 0; i < deleteButtons.length; i++) {
     deleteButtons[i].addEventListener("click", clickHandler());
   }
 }
+
+//TODO: add functionality to confirm that users wants note deleted
