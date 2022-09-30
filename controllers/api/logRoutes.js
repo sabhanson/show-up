@@ -5,30 +5,6 @@ const { withAuth, withAuthAPI } = require("../../utils/withAuth.js");
 //! all routes tested on Insomnia
 let noLogs;
 
-// GET all logs '/api/logs'
-router.get("/", withAuth, async (req, res) => {
-  try {
-    const logData = await Log.findAll({
-      where: { user_id: req.session.user_id },
-    });
-
-    const logs = logData.map((log) => log.get({ plain: true }));
-
-    if (logs.length === 0) {
-      noLogs = true;
-    }
-    // pass username to render
-    res.render("dashboard", {
-      layout: "main",
-      username: req.session.username,
-      noLogs: noLogs,
-      logs,
-    });
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
-
 // GET the "create new log" form '/api/logs/newLog'
 router.get("/newLog", (req, res) => {
   try {

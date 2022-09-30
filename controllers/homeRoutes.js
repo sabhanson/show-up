@@ -14,7 +14,7 @@ router.get("/", loggedIn, async (req, res) => {
   }
 });
 
-router.get("/login", async (req, res) => {
+router.get("/login", loggedIn, async (req, res) => {
   try {
     res.render("login", {
       layout: "noAuth",
@@ -24,7 +24,7 @@ router.get("/login", async (req, res) => {
   }
 });
 
-router.get("/signup", async (req, res) => {
+router.get("/signup", loggedIn, async (req, res) => {
   try {
     res.render("signup", {
       layout: "noAuth",
@@ -51,6 +51,16 @@ router.get("/dashboard", withAuth, async (req, res) => {
       username: req.session.username,
       noLogs: noLogs,
       logs,
+    });
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+router.get("/newLog", withAuth, (req, res) => {
+  try {
+    res.render("newLog", {
+      layout: "main",
     });
   } catch (err) {
     res.status(400).json(err);
