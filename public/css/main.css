@@ -162,10 +162,28 @@ footer {
 .log-in-p {
   font-size: 0.8rem !important;
 }
-input[type='checkbox' i] {
-  background: white !important;
-}
 
 .nav-btn {
   background-color: transparent;
+}
+
+.log-details {
+  background-color: var(--orange);
+  opacity: 0.8;
+  color: white;
+  height: 6rem;
+  border-radius: 20px;
+  width: 90%;
+  margin: 0.3rem 0;
+}
+
+#log-emoji {
+  background-color: var(--pale-blue);
+  border-radius: 50%;
+  padding: 0.6rem;
+  margin-right: 0.6rem;
+}
+
+.card-title {
+  margin-top: 0.2rem;
 }

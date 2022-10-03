@@ -15,14 +15,14 @@ Keep it Moving
 
 ## <span style="color: #ee6c4d;">Table of Contents</span>
 
-- [<span style="color:#e0fbfc;">installation](#installation)
-- [Usage](#usage)
-- [License](#license)
-- [Contributing](#contributing)
-- [Tests](#tests)
-- [Questions](#questions)
-- [Badges](#badges)
-- [Credits](#credits)
+- [<span style="color:#e0fbfc;">Installation](#installation)
+- [<span style="color:#e0fbfc;">Usage](#usage)
+- [<span style="color:#e0fbfc;">License](#license)
+- [<span style="color:#e0fbfc;">Contributing](#contributing)
+- [<span style="color:#e0fbfc;">Tests](#tests)
+- [<span style="color:#e0fbfc;">Questions](#questions)
+- [<span style="color:#e0fbfc;">Badges](#badges)
+- [<span style="color:#e0fbfc;">Credits](#credits)
 
 ## <span style="color: #ee6c4d;">Installation</span>
 

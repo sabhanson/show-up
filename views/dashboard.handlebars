@@ -13,22 +13,26 @@
 {{#each logs as |log|}}
   <div class="row">
 
-    <div class="card log-details col-6 mx-auto" style="width: 18rem;">
+    <div class="card log-details col-6 mx-auto">
       <div class="card-body">
-        <h5 class="card-title">{{log.workout_type}}</h5>
-        <p class="card-text">{{log.details}}</p>
+        <h5 class="card-title"><span
+            id="log-emoji"
+          >🚴‍♀️</span>  {{../username}}</h5>
+  
+        <p class="card-text text-center">{{ formatLogDetails log.details}}</p>
       </div>
 
-      <a
+      {{!-- <a
         data-bs-toggle="tooltip"
         data-bs-placement="bottom"
         data-bs-title="delete this log"
         data-id={{log.id}}
       >
-        <i class="bi bi-trash-fill"></i></a>
+        <i class="bi bi-trash-fill"></i></a> --}}
     </div>
   </div>
 
 {{/each}}
 
 <script src="/js/dashboard.js"></script>
+

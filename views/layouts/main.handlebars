@@ -22,13 +22,20 @@
   </head>
 
   <body>
-    <nav class="navbar">
-      <div class="container-fluid nav-bg">
-        <a class="navbar-brand" href="/api/logs">keep it moving</a>
+    <header class="d-flex flex-row justify-content-between">
+      <a href="/" class="navbar-brand">keep it moving</a>
 
-        <ul class="navbar-nav me-4">
-
-          <li class="nav-item">
+      <div class="dropdown">
+        <button
+          class="btn dropdown-toggle nav-btn"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <i class="bi bi-activity"></i>
+        </button>
+        <ul class="dropdown-menu">
+          <li class="dropdown-item">
             <a
               class="nav-link"
               data-bs-toggle="tooltip"
@@ -37,28 +44,18 @@
               href="/api/logs/newLog"
             ><i class="bi bi-plus-square"></i></a>
           </li>
-          <li class="li-inline nav-item"><a
+          <li class="li-inline dropdown-item"><a
               href="#"
               data-bs-toggle="tooltip"
               data-bs-placement="bottom"
               data-bs-title="log out"
               id="logout-link"
             ><i class="bi bi-box-arrow-right"></i></a></li>
-
         </ul>
-
       </div>
-    </nav>
-
-    <header>
-      hey header
     </header>
+
     <main>
-      <ul>
-        <li>one</li>
-        <li>one</li>
-        <li>one</li>
-      </ul>
 
       <div
         class="workouts container-fluid justify-content-center align-content-center"
