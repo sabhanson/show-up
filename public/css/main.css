@@ -121,3 +121,54 @@ ul {
 footer {
   font-family: monospace;
 }
+
+.logo {
+  margin-top: 8rem;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: var(--med-blue);
+}
+
+.logo i {
+  font-size: 4rem;
+  color: var(--orange);
+}
+
+.form-input {
+  width: 51%;
+  margin: 0.3rem;
+  background-color: transparent;
+  border: 1px solid var(--dark-blue);
+  border-radius: 3px;
+}
+
+#login {
+  width: 51%;
+}
+
+.rem-me {
+  width: fit-content;
+  color: var(--dark-blue);
+}
+
+.btn {
+  background-color: var(--orange);
+  color: white;
+}
+
+.hr {
+  text-align: center;
+  width: 51%;
+  margin: 1.3rem auto;
+  margin-bottom: 0.7rem;
+}
+
+.sign-up-a {
+  color: var(--orange) !important;
+}
+.sign-up-p {
+  font-size: 0.8rem !important;
+}
+input[type='checkbox' i] {
+  background: white !important;
+}
