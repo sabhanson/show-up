@@ -1,29 +1,27 @@
-<div class="row">
-
-  <div class="col-md-6">
-    <h2>Signup</h2>
-
-    <form class="form signup-form">
-      <div class="form-group">
-        <label for="username-signup">username:</label>
-        <input class="form-input" type="text" id="username-signup" />
-      </div>
-      <div class="form-group">
-        <label for="password-signup">password:</label>
-        <input class="form-input" type="password" id="password-signup" />
-      </div>
-      <div class="form-group">
-        <button
-          id="signup"
-          submit
-          class="btn btn-primary"
-          type="submit"
-        >signup</button>
-      </div>
-    </form>
-  </div>
-  <button type="button" id="login" class="btn btn-outline-primary">log in
-    instead</button>
+<div class="row justify-content-center logo">
+  <i class="bi bi-activity text-center"></i>
+  <h2 class="text-center">Sign up</h2>
 </div>
+<div class="row user-form justify-content-center">
+  <input
+    class="form-input"
+    placeholder="username"
+    type="text"
+    id="username-signup"
+  />
+  <input
+    class="form-input"
+    type="password"
+    placeholder="password"
+    id="password-signup"
+  />
+  <button id="signup" class="btn" type="submit">sign up</button>
+
+</div>
+
+<hr class="hr" />
+<p class="text-center log-in-p">or
+  <a href="/login" id="log-in-a">log in</a>
+  here</p>
 
 <script src="/js/signup.js"></script>
