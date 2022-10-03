@@ -1,6 +1,7 @@
 const username = document.querySelector("#username-login");
 const rememberUser = document.getElementById("rememberMe");
 
+// write something to set the background image of this to one of pics
 const loginFormHandler = async (event) => {
   event.preventDefault();
   // Collect values from the login form

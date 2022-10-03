@@ -1,0 +1,7 @@
+body {
+  background-image: url('../assets/pexels-maksim-romashkin-7108244.jpg');
+  /* background-image: url('../assets/pexels-orest-sv-1821694.jpg'); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}

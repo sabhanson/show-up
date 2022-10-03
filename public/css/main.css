@@ -15,17 +15,7 @@ body {
 
 main {
   height: 100vh;
-  /* background: rgb(224, 251, 252);
-  background: linear-gradient(
-    193deg,
-    rgba(224, 251, 252, 1) 24%,
-    rgba(238, 108, 77, 1) 100%
-  ); */
-  /* background-image: url('../assets/pexels-orest-sv-1821694.jpg');
-  background-size: cover;
-  background-repeat: no-repeat; */
 }
-
 .navbar {
   padding: 0;
 }
@@ -126,7 +116,7 @@ footer {
   margin-top: 8rem;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
     'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  color: var(--med-blue);
+  color: var(--darkest-blue);
 }
 
 .logo i {
@@ -174,4 +164,8 @@ footer {
 }
 input[type='checkbox' i] {
   background: white !important;
+}
+
+.nav-btn {
+  background-color: transparent;
 }
