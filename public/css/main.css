@@ -6,25 +6,39 @@
   --darkest-blue: #293241;
 }
 
+body {
+  background-image: url('../assets/pexels-orest-sv-1821694.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
 main {
   height: 100vh;
-  background: rgb(224, 251, 252);
+  /* background: rgb(224, 251, 252);
   background: linear-gradient(
     193deg,
     rgba(224, 251, 252, 1) 24%,
     rgba(238, 108, 77, 1) 100%
-  );
+  ); */
+  /* background-image: url('../assets/pexels-orest-sv-1821694.jpg');
+  background-size: cover;
+  background-repeat: no-repeat; */
 }
 
 .navbar {
-  background-color: var(--pale-blue);
+  padding: 0;
 }
 
 .navbar-brand,
 .navbar-brand-disabled {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 3rem;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 2rem;
   color: var(--orange);
+  padding-left: 1rem;
+  padding-top: 0.5rem;
+  text-shadow: black 0px 0px 1px;
 }
 
 .navbar-brand:hover {
@@ -36,30 +50,34 @@ main {
 }
 
 .bi {
-  color: var(--orange);
+  color: white;
   font-size: 2rem;
 }
 
 h1 {
-  font-family: 'Cormorant Garamond', serif;
+  /* font-family: 'Xanh Mono', monospace; */
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.btn-outline-primary,
-.btn-outline-primary:hover,
-.btn-outline-primary:active,
-.btn-outline-primary:visited,
-.btn-outline-primary:focus {
+.page-copy h1 {
+  padding-top: 5rem;
+  font-size: 2rem;
+  color: var(--med-blue);
+}
+
+.page-copy p,
+.UI p {
+  font-family: monospace !important;
+  padding: 0.5rem;
+}
+
+.page-copy a {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  background-color: var(--orange);
   color: white;
-  border-color: var(--darkest-blue);
-  background-color: var(--dark-blue);
-  border-radius: 10px;
 }
-.btn:hover {
-  box-shadow: 5px 5px var(--med-blue);
-  background-color: var(--orange) !important;
-  border-color: var(--orange) !important;
-}
-
 form {
   background-color: white;
   box-shadow: 0px 0px 10px var(--med-blue);
@@ -68,4 +86,38 @@ form {
 
 a {
   text-decoration: none;
+}
+
+ul {
+  background-color: transparent !important;
+}
+
+.nav-bg {
+  background-color: var(--orange);
+}
+
+.dropdown-menu.show {
+  margin-top: 0.3rem !important;
+  background-color: var(--pale-blue) !important;
+  font-size: 0.9rem;
+  text-align: right;
+  width: 20px !important;
+}
+
+.dropdown-menu li a {
+  padding-right: 1rem;
+  padding-left: 0;
+}
+
+.dropdown-toggle {
+  padding-top: 1rem !important;
+}
+
+.UI,
+.reviews {
+  margin-top: 5rem;
+}
+
+footer {
+  font-family: monospace;
 }
