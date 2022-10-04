@@ -23,7 +23,7 @@ const loginFormHandler = async (event) => {
 
     if (response.ok) {
       // If successful, redirect the browser to the profile page
-      document.location.replace("/api/logs");
+      document.location.replace("/");
     } else {
       console.log("oof");
       alert(response.statusText);
@@ -41,13 +41,6 @@ function lsSavedUser() {
 }
 
 lsSavedUser();
-// if (localStorage.checkbox && localStorage.checkbox !== "") {
-//   rememberUser.setAttribute("checked", "checked");
-//   username.value = localStorage.username;
-// } else {
-//   rememberUser.removeAttribute("checked");
-//   username.value = "";
-// }
 
 function lsRememberMe() {
   // if the remember me check is checked

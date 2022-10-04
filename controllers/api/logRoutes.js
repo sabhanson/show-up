@@ -9,6 +9,7 @@ router.get("/", withAuth, async (req, res) => {
   try {
     const logData = await Log.findAll({
       where: { user_id: req.session.user_id },
+      order: [["created_at", "DESC"]],
     });
 
     const logs = logData.map((log) => log.get({ plain: true }));
@@ -67,7 +68,7 @@ router.get("/chartTest", (req, res) => {
   }
 });
 
-// CREATE/POST a new log '/api/logs/newLog'
+// CREATE a new log '/api/logs/newLog'
 router.post("/newLog", async (req, res) => {
   const body = req.body;
   try {
@@ -101,6 +102,27 @@ router.get("/:workout_type", async (req, res) => {
       layout: "main",
       logs,
       workoutType: workoutType,
+      username: req.session.username,
+    });
+  } catch (err) {
+    res.status(400).json("no workout_type data");
+  }
+});
+
+// GET single log by its :id '/api/logs/singleLog/:id'
+router.get("/singleLog/:logId", async (req, res) => {
+  try {
+    const singleLogData = await Log.findOne({
+      where: {
+        id: req.params.logId,
+      },
+    });
+    console.log(singleLogData);
+    const singleLog = singleLogData.get({ plain: true });
+    console.log(singleLog);
+    res.render("singleLog", {
+      layout: "main",
+      singleLog,
       username: req.session.username,
     });
   } catch (err) {

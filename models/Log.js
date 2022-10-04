@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
+const moment = require("moment");
 
 //! AS AN exercising person
 //! I WANT an easy way to log my workouts
@@ -34,6 +35,12 @@ Log.init(
     //   type: DataTypes.INTEGER,
     //   allowNull: true,
     // },
+    created_at: {
+      type: DataTypes.DATE,
+      get() {
+        return moment(this.getDataValue("createdAt")).format("DD MMM YY");
+      },
+    },
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: true,
@@ -43,7 +50,12 @@ Log.init(
       },
     },
   },
-  { sequelize, freezeTableName: true, underscored: true, modelName: "log" }
+  {
+    sequelize,
+    freezeTableName: true,
+    underscored: true,
+    modelName: "log",
+  }
 );
 
 module.exports = Log;

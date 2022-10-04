@@ -5,6 +5,8 @@ module.exports = {
     if (logDetails.length > 20) {
       let shortened = logDetails.slice(0, 20) + "...";
       return shortened;
+    } else {
+      return logDetails;
     }
   },
 };
