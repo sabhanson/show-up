@@ -14,11 +14,11 @@ router.get("/", withAuth, async (req, res) => {
 
     const logs = logData.map((log) => log.get({ plain: true }));
     if (logs.length === 0) {
-      const loggedOut = true;
+      const noLogData = true;
       res.render("dashboard", {
         layout: "main",
         username: req.session.username,
-        loggedOut,
+        noLogData,
       });
     } else {
       res.render("dashboard", {
