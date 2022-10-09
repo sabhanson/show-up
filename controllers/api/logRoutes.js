@@ -7,6 +7,7 @@ const { withAuth, withAuthAPI } = require("../../utils/withAuth.js");
 // GET all logs '/api/logs'
 router.get("/", withAuth, async (req, res) => {
   try {
+    console.log(`${req.method} request made to /api/logs`);
     const logData = await Log.findAll({
       where: { user_id: req.session.user_id },
       order: [["created_at", "DESC"]],
@@ -34,6 +35,7 @@ router.get("/", withAuth, async (req, res) => {
 
 router.get("/data", withAuth, async (req, res) => {
   try {
+    console.log(`${req.method} request made to /api/logs/data`);
     const logData = await Log.findAll({
       where: { user_id: req.session.user_id },
     });
@@ -49,6 +51,7 @@ router.get("/data", withAuth, async (req, res) => {
 // GET the "create new log" form '/api/logs/newLog'
 router.get("/newLog", (req, res) => {
   try {
+    console.log(`${req.method} request made to /api/logs/newLog`);
     res.render("newLog", {
       layout: "main",
     });
@@ -60,6 +63,7 @@ router.get("/newLog", (req, res) => {
 // GET the "chartTest" view '/api/logs/chartTest'
 router.get("/chartTest", (req, res) => {
   try {
+    console.log(`${req.method} request made to /api/logs/chartTest`);
     res.render("chartTest", {
       layout: "main",
     });
@@ -72,6 +76,7 @@ router.get("/chartTest", (req, res) => {
 router.post("/newLog", async (req, res) => {
   const body = req.body;
   try {
+    console.log(`${req.method} request made to /api/logs/newLog`);
     const newLog = await Log.create({
       workout_type: body.workout_type,
       details: body.details,
@@ -84,9 +89,12 @@ router.post("/newLog", async (req, res) => {
   }
 });
 
-// GET logs by workout_type '/api/logs/:type'
+// GET logs by workout_type '/api/logs/:workout_type'
 router.get("/:workout_type", async (req, res) => {
   try {
+    console.log(
+      `${req.method} request made to /api/logs/${req.params.workout_type}`
+    );
     const logData = await Log.findAll({
       where: {
         workout_type: req.params.workout_type,
@@ -109,9 +117,12 @@ router.get("/:workout_type", async (req, res) => {
   }
 });
 
-// GET single log by its :id '/api/logs/singleLog/:id'
+// GET single log by its :logId '/api/logs/singleLog/:logId'
 router.get("/singleLog/:logId", async (req, res) => {
   try {
+    console.log(
+      `${req.method} request made to /api/logs/singleLog/:${req.params.logId}`
+    );
     const singleLogData = await Log.findOne({
       where: {
         id: req.params.logId,
@@ -130,13 +141,16 @@ router.get("/singleLog/:logId", async (req, res) => {
   }
 });
 
-// GET logs by workout_type '/api/logs/delete/:id'
-router.delete("/delete/:id", async (req, res) => {
+// DELETE logs by :logId '/api/logs/delete/:logId'
+router.delete("/delete/:logId", async (req, res) => {
   const params = req.params;
   try {
+    console.log(
+      `${req.method} request made to /api/logs/delete/:${req.params.logId}`
+    );
     const deletedLog = await Log.destroy({
       where: {
-        id: params.id,
+        id: params.logId,
       },
     });
 
