@@ -22,23 +22,40 @@ const workoutFormAFOptions = [
   },
 ];
 
-var formSelect = document.querySelector(".form-select");
+var emojiContainer = document.querySelector(".emoji-container");
+// var formSelect = document.querySelector(".form-select");
 function workoutInputOptions() {
   for (let index = 0; index < workoutFormAFOptions.length; index++) {
     let eachObj = workoutFormAFOptions[index];
-    var newOption = document.createElement("option");
-    newOption.textContent = eachObj.workout_type;
-    formSelect.append(newOption);
+    var aTag = document.createElement("a");
+    var newOption = document.createElement("li");
+    newOption.textContent = eachObj.emoji;
+    aTag.append(newOption);
+    emojiContainer.append(aTag);
   }
 }
 
-// I have access to the selected workout_type during MOUSEOUT
-formSelect.addEventListener("mouseout", () => {
-  console.log(formSelect.options[formSelect.selectedIndex].value);
+//TODO: add input areas based on workout_type selection. For example, if biking is chosen, an input should appear that says x miles, x hours
+//TODO: Fix functionality to handle form submission
+
+//TODO: change select options to circle icons of emojis, they carry a "value" attribute = workout_type
+
+emojiContainer.addEventListener("click", (e) => {
+  console.log(e.target.value);
+  if (e.target.localName === "li") {
+    e.target.parentElement.style.backgroundColor = "black";
+  }
+
+  // only allow for one to be selected at a time radio ???
 });
 
+// I have access to the selected workout_type during MOUSEOUT
+// formSelect.addEventListener("mouseout", () => {
+//   console.log(formSelect.options[formSelect.selectedIndex].value);
+// });
+
 workoutInputOptions();
-console.log(workoutFormAFOptions);
+// console.log(workoutFormAFOptions);
 const newFormHandler = async function (event) {
   event.preventDefault();
   console.log("hello");
