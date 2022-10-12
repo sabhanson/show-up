@@ -57,6 +57,8 @@ emojiContainer.addEventListener("click", (e) => {
 workoutInputOptions();
 // console.log(workoutFormAFOptions);
 const newFormHandler = async function (event) {
+  //TODO: rewrite this function to handle the additional inputs I'm writing above
+
   event.preventDefault();
   console.log("hello");
 
