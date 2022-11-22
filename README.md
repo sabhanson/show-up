@@ -4,9 +4,7 @@
 
 Keep it Moving is an easy to use mobile workout tracker designed for the user looking for a straightforward experience. No extraneous features. Just what is necessary. It's easy to join and start logging your workouts today. Visit the deployed site [here](https://show-up-sab.herokuapp.com/)!
 
-<img src="public/assets/readme/noAuth-iPhone.png" alt="drawing" width="200"/>
-<img src="public/assets/readme/login-iPhone.png" alt="drawing" width="200"/>
-<img src="public/assets/readme/signup-iPhone.png" alt="drawing" width="200"/>
+<img src="public/assets/readme/noAuth-iPhone.png" alt="drawing" width="200"/><img src="public/assets/readme/login-iPhone.png" alt="drawing" width="200"/><img src="public/assets/readme/signup-iPhone.png" alt="drawing" width="200"/>
 
 ## Table of Contents
 
