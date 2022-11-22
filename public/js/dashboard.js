@@ -1,5 +1,6 @@
 // Select the HTML element that we want to attach our event listener too.
 const deleteButtons = document.querySelectorAll("[data-id]");
+const firstEntryBtn = document.querySelector("#firstEntry");
 
 const clickHandler = function () {
   // return an inner function which creates closure.
@@ -30,3 +31,7 @@ if (deleteButtons) {
 }
 
 //TODO: add functionality to confirm that users wants note deleted
+
+firstEntryBtn.addEventListener("click", () => {
+  document.location.replace("/api/logs/newLog");
+});

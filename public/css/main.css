@@ -210,8 +210,7 @@ footer {
 }
 
 .card-text {
-  font-style: italic;
-  color: var(--pale-blue);
+  color: white;
 }
 
 .more-details {
