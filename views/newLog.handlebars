@@ -1,58 +1,31 @@
-<div class="post row text-center justify-content-center pt-3">
-  <h2></h2>
-  <form class="col-12">
-    <div class="">
+<link rel="stylesheet" href="/css/newLog.css" />
+
+<div class="row text-center justify-content-center pt-3">
+  <form class="form-size col-lg-4 col-md-6 col-sm-12">
+    <div>
       <label for="workout-type" class="form-label">What did you do?</label>
-      {{! <select class="form-select" id="inputGroupSelect01">
-        <option selected>select your activity type...</option>
-      </select> }}
-      <div class="workout-selector">
-        <ul class="emoji-container">
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="exampleRadios"
-              id="exampleRadios1"
-              value="bike"
-            />🚴‍♀️
-          </div>
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="exampleRadios"
-              id="exampleRadios1"
-              value="gym"
-            />🏋️
-          </div>
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="exampleRadios"
-              id="exampleRadios1"
-              value="run"
-            />🏃‍♀️
-          </div>
-        </ul>
-      </div>
+      <input
+        type="text"
+        class="form-control"
+        name="workout-type"
+        placeholder="Bike, run, etc."
+        aria-describedby="enter workout type"
+      />
     </div>
 
-    <div class="input-group mb-3">
-
-    </div>
-    <div class="mb-3">
-      <label for="workout-details" class="form-label">Tell me some details</label>
+    <div class="mb-3 mt-2">
+      <label for="workout-details" class="form-label">Add some details about
+        your workout.</label>
       <textarea
         type="text"
         class="form-control"
+        placeholder="Rode 5 miles, sunny day, felt pretty good..."
         name="workout-details"
+        aria-describedby="enter workout details"
       ></textarea>
     </div>
 
     <div class="pb-2">
-
       <button class="btn btn-outline-primary" id="new-log-form">Submit</button>
     </div>
   </form>
