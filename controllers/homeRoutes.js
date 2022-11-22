@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const { loggedIn } = require("../utils/withAuth");
-//! all routes tested on Insomnia
+
+//* if logged in redirected to /api/logs
+//* if logged out, forced to signup/login
 router.get("/", loggedIn, async (req, res) => {
   try {
     console.log(`${req.method} request made to /`);
@@ -12,6 +14,7 @@ router.get("/", loggedIn, async (req, res) => {
   }
 });
 
+//* renders login form
 router.get("/login", async (req, res) => {
   try {
     console.log(`${req.method} request made to /login`);
@@ -23,6 +26,7 @@ router.get("/login", async (req, res) => {
   }
 });
 
+//* renders signup form
 router.get("/signup", async (req, res) => {
   try {
     console.log(`${req.method} request made to /signup`);

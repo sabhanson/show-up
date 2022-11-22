@@ -4,7 +4,8 @@ const { withAuth, withAuthAPI } = require("../../utils/withAuth.js");
 
 //! all routes tested on Insomnia
 
-// GET all logs '/api/logs'
+//* if logged in renders all logs by that user
+//* if logged out redirect to login
 router.get("/", withAuth, async (req, res) => {
   try {
     console.log(`${req.method} request made to /api/logs`);
@@ -14,6 +15,7 @@ router.get("/", withAuth, async (req, res) => {
     });
 
     const logs = logData.map((log) => log.get({ plain: true }));
+    //* if no log data, renders copy to invite user to make a post
     if (logs.length === 0) {
       const noLogData = true;
       res.render("dashboard", {
@@ -21,6 +23,7 @@ router.get("/", withAuth, async (req, res) => {
         username: req.session.username,
         noLogData,
       });
+      //* else, renders all of the users log data
     } else {
       res.render("dashboard", {
         layout: "main",
@@ -33,6 +36,7 @@ router.get("/", withAuth, async (req, res) => {
   }
 });
 
+//* API route for testing - shows all logs by user as JSON
 router.get("/data", withAuth, async (req, res) => {
   try {
     console.log(`${req.method} request made to /api/logs/data`);
@@ -48,8 +52,8 @@ router.get("/data", withAuth, async (req, res) => {
   }
 });
 
-// GET the "create new log" form '/api/logs/newLog'
-router.get("/newLog", (req, res) => {
+//* view for newLog form
+router.get("/newLog", withAuth, (req, res) => {
   try {
     console.log(`${req.method} request made to /api/logs/newLog`);
     res.render("newLog", {

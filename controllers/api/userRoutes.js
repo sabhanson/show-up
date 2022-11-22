@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { User } = require("../../models");
 
-//! all routes tested on Insomnia
+//* creates a new user and logs in
 router.post("/signup", async (req, res) => {
   try {
     const newUser = await User.create({
@@ -21,6 +21,7 @@ router.post("/signup", async (req, res) => {
   }
 });
 
+//* logs in a user who already exists in the database
 router.post("/login", async (req, res) => {
   console.log(req.body);
   try {
@@ -52,16 +53,22 @@ router.post("/login", async (req, res) => {
   }
 });
 
+//* logs out current user, returns 404 if nobody is logged in
 router.post("/logout", (req, res) => {
+  let user = req.session.username;
+  console.log(user);
   if (req.session.logged_in) {
     req.session.destroy(() => {
-      res.status(204).end();
+      res.status(200).json({ message: `${user} was logged out` });
     });
   } else {
-    res.status(404).end();
+    res
+      .status(404)
+      .json({ message: "Nobody was logged in, so nobody was logged out" });
   }
 });
 
+//* returns all users in the database
 router.get("/allUsers", async (req, res) => {
   try {
     const allUsers = await User.findAll();
@@ -71,6 +78,7 @@ router.get("/allUsers", async (req, res) => {
   }
 });
 
+//* returns who is currently logged in
 router.get("/whoLoggedIn", async (req, res) => {
   if (req.session.username) {
     res
