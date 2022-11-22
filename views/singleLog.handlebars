@@ -1,21 +1,25 @@
-<div class="row">
-  <div class="card">
-    <div class="card-body">
-      <h6 class="card-subtitle mb-2 text-muted"><span
-          id="log-emoji"
-        >🚴‍♀️</span>{{singleLog.workout_type}}</h6>
-      <p class="card-text">{{singleLog.details}}
-        id:
-        {{log.id}}</p>
-
+<div class="card m-2">
+  <div class="card-body">
+    <div class="row justify-content-between">
+      <h6 class="col-7 card-subtitle mb-2">{{singleLog.workout_type}}
+        on
+        {{singleLog.created_at}}
+      </h6>
       <a
+        style="width: fit-content;"
         data-bs-toggle="tooltip"
         data-bs-placement="bottom"
-        data-bs-title="delete this log"
+        data-bs-title="Delete Log"
         data-id={{singleLog.id}}
       >
-        <i class="bi bi-three-dots-vertical" style="color:pink;"></i></a>
+        <i class="bi bi-trash-fill"></i></a>
     </div>
+    <div class="row justify-content-between align-items-center">
+      <p class="card-text">{{singleLog.details}}
+      </p>
+
+    </div>
+
   </div>
 </div>
 
